@@ -1,62 +1,50 @@
 import React from 'react';
 import { TabBar } from 'antd-mobile';
+//import { asyncComponent } from '../tools/asyncComponent';
+//import { ComponentList } from '../tools/dynamic';
+import { Home } from './Home';
+//const Home = asyncComponent(() => import('./Home'));
 
 class MyTabBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: this.props.selectedTab,
       hidden: false,
-      fullScreen: false,
+      fullScreen: true,
     };
   }
 
   renderContent(pageText) {
     return (
-      <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
-        <div style={{ paddingTop: 60 }}>Clicked “{pageText}” tab， show “{pageText}” information</div>
-        <a style={{ display: 'block', marginTop: 40, marginBottom: 20, color: '#108ee9' }}
-          onClick={(e) => {
-            e.preventDefault();
-            this.setState({
-              hidden: !this.state.hidden,
-            });
-          }}
-        >
-          Click to show/hide tab-bar
-        </a>
-        <a style={{ display: 'block', marginBottom: 600, color: '#108ee9' }}
-          onClick={(e) => {
-            e.preventDefault();
-            this.setState({
-              fullScreen: !this.state.fullScreen,
-            });
-          }}
-        >
-          Click to switch fullscreen
-        </a>
-      </div>
+      (pageText === 'home')?<Home/>:'home'
     );
   }
 
   render() {
+    //console.log(this.props)
     return (
-      <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
+      <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', bottom: 0 } : { height: 400 }}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
           barTintColor="white"
           hidden={this.state.hidden}
+          noRenderContent={false}
+          prerenderingSiblingsNumber={0}
+          tabBarPosition='bottom'
         >
           <TabBar.Item
-            title="Life"
-            key="Life"
+            title="首页"
+            key="home"
             icon={<div style={{
               width: '22px',
               height: '22px',
               background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
-            />
-            }
+            />}
+            // icon={
+            //   <Icon type='down'></Icon>
+            // }
             selectedIcon={<div style={{
               width: '22px',
               height: '22px',
@@ -72,7 +60,7 @@ class MyTabBar extends React.Component {
             }}
             data-seed="logId"
           >
-            {this.renderContent('Life')}
+            {this.renderContent('home')}
           </TabBar.Item>
           <TabBar.Item
             icon={

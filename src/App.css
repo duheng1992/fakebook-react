@@ -1,58 +1,28 @@
-.App {
-  text-align: center;
+.flex-container {
+    margin: 10px 15px;
+}
+.flex-container .inline {
+    /* width: 80px!important; */
+    margin: 3px 3px 3px 0;
+}
+  .flex-container .small {
+    height: 20px!important;
+    line-height: 20px!important;
+}
+.sub-title {
+    color: #888;
+    font-size: 14px;
+    padding: 0px 0 18px 0;
+}
+.placeholder {
+    background-color: #ebebef;
+    color: #bbb;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-#tab-bar.demo {
-  display: flex;
-  flex-direction: column;
-}
-#tab-bar .demoName {
-  height: 40px;
-}
-#tab-bar .demo-preview-item .am-tab-bar {
-  background-color: white;
-}
-
-.am-tab-bar::-webkit-scrollbar {
-  display: none;
-}
-#tab-bar.demo {
-  display: flex;
-  flex-direction: column;
-}
-#tab-bar .demoName {
-  height: 40px;
-}
-#tab-bar .demo-preview-item .am-tab-bar {
-  background-color: white;
+.am-search {
+    border-bottom: 1px solid #ddd;
 }
