@@ -5,6 +5,7 @@ import { TabBar } from 'antd-mobile';
 import { configTabBar } from '../config/config_tabBar';
 
 import { Home } from './Home';
+import { PersonalPage } from './PersonalPage';
 //const Home = asyncComponent(() => import('./Home'));
 
 class MyTabBar extends React.Component {
@@ -20,7 +21,7 @@ class MyTabBar extends React.Component {
 
   renderContent(pageText) {
     return (
-      (pageText === 'home')?<Home/>:pageText
+      (pageText === 'home')?<Home/>:((pageText === 'mine')?<PersonalPage/>:pageText)
     );
   }
 
