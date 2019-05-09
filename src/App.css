@@ -1,9 +1,11 @@
+@import '~antd/dist/antd.css';
+
 .flex-container {
-    margin: 10px 15px;
+    /* margin: 5px 5px; */
 }
 .flex-container .inline {
     /* width: 80px!important; */
-    margin: 3px 3px 3px 0;
+    /* margin: 3px 3px 3px 0; */
 }
   .flex-container .small {
     height: 20px!important;
@@ -25,4 +27,14 @@
 
 .am-search {
     border-bottom: 1px solid #ddd;
+}
+
+.hidden-mylist, .hidden-skeleton {
+    /* visibility: hidden;  */
+    display: none;
+}
+
+.show-mylist .show-skeleton {
+    /* visibility: visible; */
+    display: block;
 }

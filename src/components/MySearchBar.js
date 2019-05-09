@@ -36,7 +36,7 @@ class MySearchBar extends React.Component {
         this.setState({
             value: val
         }, () => {
-            //TODO:这里应向父组件传递查询的keyword
+            //这里向父组件传递查询的keyword
             //let keyWord = this.state.value;
             this.props.doSearch(this.state.value);
         });

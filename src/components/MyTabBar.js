@@ -2,6 +2,8 @@ import React from 'react';
 import { TabBar } from 'antd-mobile';
 //import { asyncComponent } from '../tools/asyncComponent';
 //import { ComponentList } from '../tools/dynamic';
+import { configTabBar } from '../config/config_tabBar';
+
 import { Home } from './Home';
 //const Home = asyncComponent(() => import('./Home'));
 
@@ -10,6 +12,7 @@ class MyTabBar extends React.Component {
     super(props);
     this.state = {
       selectedTab: this.props.selectedTab,
+      tabBarList: configTabBar,
       hidden: false,
       fullScreen: true,
     };
@@ -17,12 +20,12 @@ class MyTabBar extends React.Component {
 
   renderContent(pageText) {
     return (
-      (pageText === 'home')?<Home/>:'home'
+      (pageText === 'home')?<Home/>:pageText
     );
   }
 
   render() {
-    //console.log(this.props)
+    //console.log(configTabBar)
     return (
       <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', bottom: 0 } : { height: 400 }}>
         <TabBar
@@ -34,103 +37,40 @@ class MyTabBar extends React.Component {
           prerenderingSiblingsNumber={0}
           tabBarPosition='bottom'
         >
-          <TabBar.Item
-            title="首页"
-            key="home"
-            icon={<div style={{
-              width: '22px',
-              height: '22px',
-              background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
-            />}
-            // icon={
-            //   <Icon type='down'></Icon>
-            // }
-            selectedIcon={<div style={{
-              width: '22px',
-              height: '22px',
-              background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
-            />
-            }
-            selected={this.state.selectedTab === 'blueTab'}
-            badge={1}
-            onPress={() => {
-              this.setState({
-                selectedTab: 'blueTab',
-              });
-            }}
-            data-seed="logId"
-          >
-            {this.renderContent('home')}
-          </TabBar.Item>
-          <TabBar.Item
-            icon={
-              <div style={{
+        {
+          this.state.tabBarList.details.map(( item ) => {
+            return (
+            <TabBar.Item
+              title={ item.title }
+              key={ item.name }
+              icon={<div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat' }}
-              />
-            }
-            selectedIcon={
-              <div style={{
+                background: 'url(' + item["unselect-background"] + ') center center /  21px 21px no-repeat' }}
+              />}
+              // icon={
+              //   <Icon type='down'></Icon>
+              // }
+              selectedIcon={<div style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
+                background: 'url(' + item["select-background"] + ') center center /  21px 21px no-repeat' }}
               />
-            }
-            title="Koubei"
-            key="Koubei"
-            badge={'new'}
-            selected={this.state.selectedTab === 'redTab'}
-            onPress={() => {
-              this.setState({
-                selectedTab: 'redTab',
-              });
-            }}
-            data-seed="logId1"
-          >
-            {this.renderContent('Koubei')}
-          </TabBar.Item>
-          <TabBar.Item
-            icon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat' }}
-              />
-            }
-            selectedIcon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
-              />
-            }
-            title="Friend"
-            key="Friend"
-            dot
-            selected={this.state.selectedTab === 'greenTab'}
-            onPress={() => {
-              this.setState({
-                selectedTab: 'greenTab',
-              });
-            }}
-          >
-            {this.renderContent('Friend')}
-          </TabBar.Item>
-          <TabBar.Item
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
-            title="My"
-            key="my"
-            selected={this.state.selectedTab === 'yellowTab'}
-            onPress={() => {
-              this.setState({
-                selectedTab: 'yellowTab',
-              });
-            }}
-          >
-            {this.renderContent('My')}
-          </TabBar.Item>
+              }
+              selected={this.state.selectedTab === item.name}
+              badge={1}
+              onPress={() => {
+                this.setState({
+                  selectedTab: item.name,
+                });
+              }}
+              // data-seed="logId"
+            >
+              {this.renderContent(item.name)}
+            </TabBar.Item>
+            )
+          })
+        }
         </TabBar>
       </div>
     );
