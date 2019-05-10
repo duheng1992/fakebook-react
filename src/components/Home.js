@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+import { add, minus, asyncAdd } from '../action/testCount';
+
 import { Flex, WhiteSpace } from 'antd-mobile';
 import { Skeleton } from 'antd';
 
@@ -19,7 +22,7 @@ class Home extends React.Component {
 }
 
   componentDidMount() {
-
+    console.log(this.props)
   }
 
   searchInfo = (keyWord) => {
@@ -29,6 +32,7 @@ class Home extends React.Component {
   }
   
   loaded = (status) => {
+    console.log(status)
     if(status){
       this.setState({
         listLoaded: true,
@@ -48,15 +52,20 @@ class Home extends React.Component {
                 {
                   [1,2,3,4,5].map(item => {
                     return (
-                      <Skeleton 
-                        key={item}
-                        className={this.state.showSkeleton}
-                        active 
-                        avatar 
-                        loading 
-                        paragraph
-                        title
-                      ></Skeleton>
+                      <div className={this.state.showSkeleton}
+                           key={item}
+                           style={{
+                             padding:30
+                           }}>
+                        <Skeleton 
+                          key={item}
+                          active 
+                          avatar 
+                          loading 
+                          paragraph
+                          title
+                        ></Skeleton>
+                      </div>
                     )
                   })
                 }
@@ -76,4 +85,25 @@ class Home extends React.Component {
 //   <div className={`${className} placeholder`} {...restProps}>Block</div>
 // );
   
-export { Home }
+const mapStateToProps = (state, ownProps) => {
+    return {
+      state
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    add () {
+      dispatch(add())
+    },
+    dec () {
+      dispatch(minus())
+    },
+    asyncAdd () {
+      dispatch(asyncAdd())
+    }
+  }
+}
+
+export default connect (mapStateToProps, mapDispatchToProps)(Home);
+// export {Home}

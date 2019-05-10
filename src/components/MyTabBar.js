@@ -4,7 +4,7 @@ import { TabBar } from 'antd-mobile';
 //import { ComponentList } from '../tools/dynamic';
 import { configTabBar } from '../config/config_tabBar';
 
-import { Home } from './Home';
+import Home from './Home';
 import { PersonalPage } from './PersonalPage';
 //const Home = asyncComponent(() => import('./Home'));
 

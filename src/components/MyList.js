@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Spin } from 'antd';
+import { Loading } from './Loading';
 
 import { PullToRefresh, ListView } from 'antd-mobile';
+
 
 const data = [
     {
@@ -75,7 +77,7 @@ class MyList extends React.Component {
           this.rData = genData();
           this.setState({
             dataSource: this.state.dataSource.cloneWithRows(genData()),
-            height: hei,
+            height:hei,
             refreshing: false,
             isLoading: false,
             initLoading: false
@@ -157,51 +159,50 @@ class MyList extends React.Component {
         };
 
         return (
-            <div>
-              <ListView
-                initialListSize={10}
-                key={this.state.useBodyScroll ? '0' : '1'}
-                ref={el => this.lv = el}
-                dataSource={this.state.dataSource}
-                renderHeader={
-                    () => <span></span>
-                }
-                renderFooter={
-                  () => (
-                    <div style={{ padding: 30, textAlign: 'center' }}>
-                      {this.state.isLoading ? '加载中...' : '全部加载完毕'}
-                    </div>
-                  )
-                }
-                renderRow={row}
-                renderSeparator={separator}
-                useBodyScroll={this.state.useBodyScroll}
-                style={this.state.useBodyScroll ? {} : {
-                  height: this.state.height,
-                  border: '1px solid #ddd',
-                  margin: '5px 0',
-                }}
-                pullToRefresh={
-                    <PullToRefresh
-                      refreshing={this.state.refreshing}
-                      onRefresh={this.onRefresh}
-                      indicator={
-                        {
-                          deactivate: '继续拉动刷新',
-                          activate: '松手刷新',
-                          release: <Spin />,
-                          finish: '加载完成'
-                        }
+          <div>
+            <ListView
+              initialListSize={10}
+              key={this.state.useBodyScroll ? '0' : '1'}
+              ref={el => this.lv = el}
+              dataSource={this.state.dataSource}
+              renderHeader={
+                  () => <span></span>
+              }
+              renderFooter={
+                () => (
+                  <div style={{ padding: 30, textAlign: 'center' }}>
+                    {this.state.isLoading ? '加载中...' : '全部加载完毕'}
+                  </div>
+                )
+              }
+              renderRow={row}
+              renderSeparator={separator}
+              useBodyScroll={this.state.useBodyScroll}
+              style={this.state.useBodyScroll ? {} : {
+                height: this.state.height,
+                border: '1px solid #ddd',
+                margin: '5px 0',
+                overflow: 'hidden'
+              }}
+              pullToRefresh={
+                  <PullToRefresh
+                    refreshing={this.state.refreshing}
+                    onRefresh={this.onRefresh}
+                    indicator={
+                      {
+                        deactivate: '继续拉动刷新',
+                        activate: '松手刷新',
+                        release: <Spin />,
+                        finish: '加载完成'
                       }
-                    />
-                }
-                onEndReached={this.onEndReached}
-                pageSize={5}
-              />
-            </div>
-        );
-
-
+                    }
+                  />
+              }
+              onEndReached={this.onEndReached}
+              pageSize={5}
+            />
+          </div>
+      );
        
     }
 }
