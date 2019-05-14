@@ -73,3 +73,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 1. 使用react-redux配置redux时报错：TypeError: store.getState is not a function
 解决：
+
+2. Tabs标签在StickyContainer中如何滑动置顶的问题（顶部有一个搜索框）
+解决：

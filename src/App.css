@@ -6,7 +6,9 @@
 }
 
 .flex-container {
-    /* margin: 5px 5px; */
+    position: relative;
+    width: 100%;
+    top:45px;
 }
 .flex-container .inline {
     /* width: 80px!important; */
@@ -50,9 +52,9 @@
     text-align: center;
     background: rgba(216, 57, 150, 0.05);
     border-radius: 4px;
-    margin-bottom: 20px;
-    padding: 30px 50px;
-    margin: 20px 0;
+    /* margin-bottom: 20px; */
+    /* padding: 30px 50px; */
+    /* margin: 20px 0; */
 }
 
 .balls {
@@ -98,5 +100,12 @@
       transform: translateX(120%);
     }
   }
-  
-  
+
+  .search-bar {
+    position: fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index: 999999; 
+    margin-bottom: 50px;
+  }

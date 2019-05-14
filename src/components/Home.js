@@ -8,6 +8,7 @@ import { Skeleton } from 'antd';
 
 import { MySearchBar } from './MySearchBar';
 import { MyList } from './MyList';
+import { MyCarousel } from './MyCarousel';
 
 class Home extends React.Component {
 
@@ -32,7 +33,6 @@ class Home extends React.Component {
   }
   
   loaded = (status) => {
-    console.log(status)
     if(status){
       this.setState({
         listLoaded: true,
@@ -69,6 +69,8 @@ class Home extends React.Component {
                     )
                   })
                 }
+                
+                <MyCarousel></MyCarousel>
                 <div className={this.state.showMyList}>
                   <MyList isLoaded={this.loaded}></MyList>
                 </div>

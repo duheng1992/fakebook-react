@@ -45,7 +45,7 @@ class MySearchBar extends React.Component {
 
     render () {
         return (
-            <div>
+            <div className="search-bar">
                 <SearchBar
                     value={this.state.value}
                     placeholder="搜索"
