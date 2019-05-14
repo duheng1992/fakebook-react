@@ -14,6 +14,7 @@ const tabs = [
 ];
 
 function renderTabBar(props) {
+  // console.log(props)
   return (<Sticky topOffset={-5}>
     {
       ({ style }) => <div style={{ ...style, zIndex: 1000 }}>
