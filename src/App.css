@@ -9,12 +9,14 @@
     position: relative;
     width: 100%;
     top:45px;
+    height: 100%;
+    overflow-y: scroll;
 }
 .flex-container .inline {
     /* width: 80px!important; */
     /* margin: 3px 3px 3px 0; */
 }
-  .flex-container .small {
+.flex-container .small {
     height: 20px!important;
     line-height: 20px!important;
 }

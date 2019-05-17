@@ -63,6 +63,7 @@ class MyTabBar extends React.Component {
               onPress={() => {
                 this.setState({
                   selectedTab: item.name,
+                  reLoad: true  //
                 });
               }}
               // data-seed="logId"

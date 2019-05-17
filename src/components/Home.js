@@ -46,7 +46,8 @@ class Home extends React.Component {
       return (
         <div>
           <MySearchBar doSearch={this.searchInfo}></MySearchBar>
-          <div className="flex-container">
+          <div className="flex-container"> 
+            <div>
             <Flex justify="center">
               <Flex.Item>
                 {
@@ -77,6 +78,7 @@ class Home extends React.Component {
               </Flex.Item>
             </Flex>
             <WhiteSpace />
+            </div>
           </div>
         </div>
       )
