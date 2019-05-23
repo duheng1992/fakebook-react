@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 /* eslint no-dupe-keys: 0, no-mixed-operators: 0 */
-import { PullToRefresh, ListView, Button } from 'antd-mobile';
+import { PullToRefresh, ListView, Tabs, WhiteSpace, Badge } from 'antd-mobile';
 
 const data = [
   {
@@ -100,7 +100,6 @@ class MyList extends React.Component {
     if (this.state.isLoading && !this.state.hasMore) {
       return;
     }
-    console.log('reach end', event);
     this.setState({ isLoading: true });
     setTimeout(() => {
       this.rData = [...this.rData, ...genData(++pageIndex)];
@@ -112,6 +111,18 @@ class MyList extends React.Component {
   };
 
   render() {
+    const tabs = [
+      { title: '1st Tab' },
+      { title: '2nd Tab' },
+      { title: '3rd Tab' },
+      { title: '4th Tab' },
+      { title: '5th Tab' },
+      { title: '6th Tab' },
+      { title: '7th Tab' },
+      { title: '8th Tab' },
+      { title: <Badge text={'3'}>First Tab</Badge> },
+    ];
+
     const separator = (sectionID, rowID) => (
       <div
         key={`${sectionID}-${rowID}`}
@@ -124,6 +135,7 @@ class MyList extends React.Component {
       />
     );
     let index = data.length - 1;
+    // 每行样式
     const row = (rowData, sectionID, rowID) => {
       if (index < 0) {
         index = data.length - 1;
@@ -148,38 +160,45 @@ class MyList extends React.Component {
           </div>
         </div>
       );
-    };
+    }
+
     return (<div>
-      <Button
-        style={{ margin: '30px 15px' }}
-        inline
-        onClick={() => this.setState({ useBodyScroll: !this.state.useBodyScroll })}
+      <Tabs 
+        tabs={tabs} 
+        initialPage={0}
+        tabBarPosition="top"
+        onChange={(tab, index) => { console.log('onChange'); }}
+        onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
       >
-        {this.state.useBodyScroll ? 'useBodyScroll' : 'partial scroll'}
-      </Button>
       <ListView
         key={this.state.useBodyScroll ? '0' : '1'}
         ref={el => this.lv = el}
         dataSource={this.state.dataSource}
-        renderHeader={() => <span>Pull to refresh</span>}
-        renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
+        renderHeader={() => <span>动态展示</span>}
+        renderFooter={() => (<div style={{ padding: 10, textAlign: 'center' }}>
           {this.state.isLoading ? 'Loading...' : 'Loaded'}
         </div>)}
         renderRow={row}
         renderSeparator={separator}
         useBodyScroll={this.state.useBodyScroll}
+
         style={this.state.useBodyScroll ? {} : {
           height: this.state.height,
-          border: '1px solid #ddd',
-          margin: '5px 0',
+          border: 0,
+          margin: '10px 0',
+        
         }}
         pullToRefresh={<PullToRefresh
           refreshing={this.state.refreshing}
           onRefresh={this.onRefresh}
+          damping={150}
+          distanceToRefresh={50}
         />}
         onEndReached={this.onEndReached}
         pageSize={5}
       />
+      </Tabs>
+      <WhiteSpace />
     </div>);
   }
 }

@@ -6,7 +6,9 @@ import { configTabBar } from '../config/config_tabBar';
 
 //import Home from './Home';
 import { PersonalPage } from './PersonalPage';
+import { SearchPage } from './SearchPage';
 const Home = asyncComponent(() => import('./Home'));
+//  const SearchPage = asyncComponent(() => import('./SearchPage'));
 
 class MyTabBar extends React.Component {
   constructor(props) {
@@ -21,7 +23,9 @@ class MyTabBar extends React.Component {
 
   renderContent(pageText) {
     return (
-      (pageText === 'home')?<Home/>:((pageText === 'mine')?<PersonalPage/>:pageText)
+      (pageText === 'home')?<Home/>:
+      (pageText === 'mine')?<PersonalPage/>:
+      (pageText === 'search')?<SearchPage/>:pageText
     );
   }
 

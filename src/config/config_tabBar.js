@@ -13,6 +13,12 @@ const configTabBar = {
             'select-background': 'images/photo.svg'
         },
         {
+            'name': 'search',
+            'title': '搜索',
+            'unselect-background': 'images/search_un.svg',
+            'select-background': 'images/search.svg'
+        },
+        {
             'name': 'msg',
             'title': '消息',
             'unselect-background': 'images/msg_un.svg',

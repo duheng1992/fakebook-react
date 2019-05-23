@@ -45,7 +45,6 @@ class Home extends React.Component {
   render(){
       return (
         <div>
-          <MySearchBar doSearch={this.searchInfo}></MySearchBar>
           <div className="flex-container"> 
             <div>
             <Flex justify="center">
@@ -71,7 +70,6 @@ class Home extends React.Component {
                   })
                 }
                 
-                <MyCarousel></MyCarousel>
                 <div className={this.state.showMyList}>
                   <MyList isLoaded={this.loaded}></MyList>
                 </div>
