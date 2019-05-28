@@ -1,1 +1,2 @@
-//这里放置全部静态变量
+export * from './alert.constants';
+export * from './user.constants';
