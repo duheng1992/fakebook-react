@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 /* eslint no-dupe-keys: 0, no-mixed-operators: 0 */
 import { PullToRefresh, ListView, Tabs, WhiteSpace, Badge } from 'antd-mobile';
 
+import { MySearchBar } from './MySearchBar';
+
 const data = [
   {
     img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
@@ -45,6 +47,9 @@ class MyList extends React.Component {
       isLoading: true,
       height: document.documentElement.clientHeight,
       useBodyScroll: false,
+      doSearch: (text) => {
+          console.log(text)
+      }
     };
   }
 
@@ -79,6 +84,8 @@ class MyList extends React.Component {
         this.props.isLoaded(true)
       });
     }, 1500);
+
+    console.log(this.props)
   }
 
   onRefresh = () => {
@@ -163,6 +170,7 @@ class MyList extends React.Component {
     }
 
     return (<div>
+      <MySearchBar doSearch={this.state.doSearch}></MySearchBar>
       <Tabs 
         tabs={tabs} 
         initialPage={0}

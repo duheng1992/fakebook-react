@@ -1,13 +1,11 @@
 import React from 'react';
 import { TabBar } from 'antd-mobile';
 import { asyncComponent } from '../tools/asyncComponent';
-//import { ComponentList } from '../tools/dynamic';
 import { configTabBar } from '../config/config_tabBar';
 
-//import Home from './Home';
-import { PersonalPage } from './PersonalPage';
-import { SearchPage } from './SearchPage';
-const Home = asyncComponent(() => import('./Home'));
+import { PersonalPage } from '../pages/PersonalPage';
+import { SearchPage } from '../pages/SearchPage';
+const Home = asyncComponent(() => import('../pages/Home'));
 //  const SearchPage = asyncComponent(() => import('./SearchPage'));
 
 class MyTabBar extends React.Component {

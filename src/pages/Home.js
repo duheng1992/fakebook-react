@@ -6,9 +6,9 @@ import { add, minus, asyncAdd } from '../action/testCount';
 import { Flex, WhiteSpace } from 'antd-mobile';
 import { Skeleton } from 'antd';
 
-import { MySearchBar } from './MySearchBar';
-import { MyList } from './MyList';
-import { MyCarousel } from './MyCarousel';
+//import { MySearchBar } from './MySearchBar';
+import { MyList } from '../components/MyList';
+//import { MyCarousel } from './MyCarousel';
 
 class Home extends React.Component {
 
@@ -71,7 +71,9 @@ class Home extends React.Component {
                 }
                 
                 <div className={this.state.showMyList}>
-                  <MyList isLoaded={this.loaded}></MyList>
+                  <MyList 
+                    isLoaded={this.loaded}
+                  ></MyList>
                 </div>
               </Flex.Item>
             </Flex>
@@ -95,15 +97,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    add () {
-      dispatch(add())
-    },
-    dec () {
-      dispatch(minus())
-    },
-    asyncAdd () {
-      dispatch(asyncAdd())
-    }
+
   }
 }
 
