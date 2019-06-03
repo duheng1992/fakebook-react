@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { PullToRefresh, ListView, Tabs, WhiteSpace, Badge } from 'antd-mobile';
 
 import { MySearchBar } from './MySearchBar';
+import { myListTab } from '../config/config_myList_tab';
 
 const data = [
   {
@@ -54,13 +55,14 @@ class MyList extends React.Component {
   }
 
   // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.dataSource !== this.props.dataSource) {
-  //     this.setState({
-  //       dataSource: this.state.dataSource.cloneWithRows(nextProps.dataSource),
-  //     });
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+    // if (nextProps.dataSource !== this.props.dataSource) {
+    //   this.setState({
+    //     dataSource: this.state.dataSource.cloneWithRows(nextProps.dataSource),
+    //   });
+    // }
+  }
 
   componentDidUpdate() {
     if (this.state.useBodyScroll) {
@@ -85,7 +87,7 @@ class MyList extends React.Component {
       });
     }, 1500);
 
-    console.log(this.props)
+    //console.log(this.props)
   }
 
   onRefresh = () => {
@@ -118,7 +120,7 @@ class MyList extends React.Component {
   };
 
   render() {
-    const tabs = [
+    const tabs = myListTab.details ? myListTab.details : ([
       { title: '1st Tab' },
       { title: '2nd Tab' },
       { title: '3rd Tab' },
@@ -128,7 +130,7 @@ class MyList extends React.Component {
       { title: '7th Tab' },
       { title: '8th Tab' },
       { title: <Badge text={'3'}>First Tab</Badge> },
-    ];
+    ]);
 
     const separator = (sectionID, rowID) => (
       <div
