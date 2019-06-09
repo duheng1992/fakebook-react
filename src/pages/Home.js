@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { add, minus, asyncAdd } from '../action/testCount';
+//import { add, minus, asyncAdd } from '../action/testCount';
 
 import { Flex, WhiteSpace } from 'antd-mobile';
 import { Skeleton } from 'antd';

@@ -5,10 +5,13 @@
     padding: 0;
 }
 
+body {
+  overflow: hidden;
+}
+
 .flex-container {
     position: relative;
     width: 100%;
-    height: 100%;
     overflow-y: scroll;
 }
 .flex-container .inline {
@@ -103,9 +106,24 @@
   }
 
   .search-bar {
-    width:100%;
+    width:85%;
     top:0;
     left:0;
     z-index: 999999; 
+    float:left;
+  }
 
+  .add-post {
+    float:right;
+    width:15%;
+    top:0;
+    right:0;
+  }
+
+  .am-whitespace-md {
+    display: none;
+  }
+
+  .am-list-footer {
+    height: 30px;
   }

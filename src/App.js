@@ -15,7 +15,9 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-
+    window.onload = function(){
+      
+    }
   }
 
   onEndReached = (event) => {
